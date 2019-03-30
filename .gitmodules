@@ -1,0 +1,6 @@
+[submodule "include/Sporth"]
+	path = include/Sporth
+	url = https://github.com/pac-dev/Sporth
+[submodule "include/Soundpipe"]
+	path = include/Soundpipe
+	url = https://github.com/PaulBatchelor/Soundpipe
