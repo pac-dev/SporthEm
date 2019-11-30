@@ -13,22 +13,32 @@ extern "C" {
 
 	int buffer_frames;
 	float* buffer;
-	sp_data *sp;
+	float* bufferst;
+	float outL, outR;
 	plumber_data pd;
+	sp_data *sp;
 	bool compiled;
 
 	static void process(sp_data *sp, void *udp)
 	{
 		plumber_data *pd = (plumber_data *)udp;
 		plumber_compute(pd, PLUMBER_COMPUTE);
-		SPFLOAT out;
-		sp->out[0] = sporth_stack_pop_float(&pd->sporth.stack);
+		outL = sporth_stack_pop_float(&pd->sporth.stack);
+	}
+
+	static void process_stereo(sp_data *sp, void *udp)
+	{
+		plumber_data *pd = (plumber_data *)udp;
+		plumber_compute(pd, PLUMBER_COMPUTE);
+		outL = sporth_stack_pop_float(&pd->sporth.stack);
+		outR = sporth_stack_pop_float(&pd->sporth.stack);
 	}
 
 	int sporthem_init()
 	{
 		buffer_frames = 4096;
 		buffer = new float[buffer_frames];
+		bufferst = new float[buffer_frames*2];
 		sp_create(&sp);
 		plumber_register(&pd);
 		plumber_init(&pd);
@@ -54,9 +64,20 @@ extern "C" {
 		assert(num_frames == buffer_frames);
 		for (int i = 0; i < num_frames; ++i) {
 			process(sp, &pd);
-			buffer[i] = sp->out[0];
+			buffer[i] = outL;
 		}
 	    return (int) buffer;
+	}
+
+	EMSCRIPTEN_KEEPALIVE int sporthem_process_stereo(int num_frames) {
+	    assert(bufferst);
+		assert(num_frames == buffer_frames);
+		for (int i = 0; i < num_frames; ++i) {
+			process_stereo(sp, &pd);
+			bufferst[i*2] = outL;
+			bufferst[i*2+1] = outR;
+		}
+	    return (int) bufferst;
 	}
 
 	int sporthem_setp(int id, float val)
