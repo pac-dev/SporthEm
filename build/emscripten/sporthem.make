@@ -28,12 +28,12 @@ ifeq ($(config),debug)
   INCLUDES += -I../.. -I../../source -I../../source/generated -I../../include/Soundpipe/h -I../../include/Soundpipe/lib/faust -I../../include/Soundpipe/lib/kissfft -I../../include/Soundpipe/lib/spa
   FORCE_INCLUDE +=
   ALL_CPPFLAGS += $(CPPFLAGS) -MMD -MP $(DEFINES) $(INCLUDES)
-  ALL_CFLAGS += $(CFLAGS) $(ALL_CPPFLAGS) -g -s EXPORTED_FUNCTIONS="['_sporthem_init', '_sporthem_compile', '_sporthem_process', '_sporthem_process_stereo', '_sporthem_setp', '_sporthem_getp']" --memory-init-file 0 -s EXTRA_EXPORTED_RUNTIME_METHODS="['cwrap']" -s BINARYEN_TRAP_MODE='clamp' -s WASM=1
-  ALL_CXXFLAGS += $(CXXFLAGS) $(ALL_CPPFLAGS) -g -s EXPORTED_FUNCTIONS="['_sporthem_init', '_sporthem_compile', '_sporthem_process', '_sporthem_process_stereo', '_sporthem_setp', '_sporthem_getp']" --memory-init-file 0 -s EXTRA_EXPORTED_RUNTIME_METHODS="['cwrap']" -s BINARYEN_TRAP_MODE='clamp' -s WASM=1
+  ALL_CFLAGS += $(CFLAGS) $(ALL_CPPFLAGS) -g -s EXPORTED_FUNCTIONS="['_sporthem_init', '_sporthem_compile', '_sporthem_process', '_sporthem_process_stereo', '_sporthem_setp', '_sporthem_getp']" --memory-init-file 0 -s EXTRA_EXPORTED_RUNTIME_METHODS="['cwrap']" -s WASM=1
+  ALL_CXXFLAGS += $(CXXFLAGS) $(ALL_CPPFLAGS) -g -s EXPORTED_FUNCTIONS="['_sporthem_init', '_sporthem_compile', '_sporthem_process', '_sporthem_process_stereo', '_sporthem_setp', '_sporthem_getp']" --memory-init-file 0 -s EXTRA_EXPORTED_RUNTIME_METHODS="['cwrap']" -s WASM=1
   ALL_RESFLAGS += $(RESFLAGS) $(DEFINES) $(INCLUDES)
   LIBS +=
   LDDEPS +=
-  ALL_LDFLAGS += $(LDFLAGS) -s EXPORTED_FUNCTIONS="['_sporthem_init', '_sporthem_compile', '_sporthem_process', '_sporthem_process_stereo', '_sporthem_setp', '_sporthem_getp']" --memory-init-file 0 -s EXTRA_EXPORTED_RUNTIME_METHODS="['cwrap']" -s BINARYEN_TRAP_MODE='clamp' -s WASM=1
+  ALL_LDFLAGS += $(LDFLAGS) -s EXPORTED_FUNCTIONS="['_sporthem_init', '_sporthem_compile', '_sporthem_process', '_sporthem_process_stereo', '_sporthem_setp', '_sporthem_getp']" --memory-init-file 0 -s EXTRA_EXPORTED_RUNTIME_METHODS="['cwrap']" -s WASM=1
   LINKCMD = $(CXX) -o "$@" $(OBJECTS) $(RESOURCES) $(ALL_LDFLAGS) $(LIBS)
   define PREBUILDCMDS
   endef
@@ -64,12 +64,12 @@ ifeq ($(config),release)
   INCLUDES += -I../.. -I../../source -I../../source/generated -I../../include/Soundpipe/h -I../../include/Soundpipe/lib/faust -I../../include/Soundpipe/lib/kissfft -I../../include/Soundpipe/lib/spa
   FORCE_INCLUDE +=
   ALL_CPPFLAGS += $(CPPFLAGS) -MMD -MP $(DEFINES) $(INCLUDES)
-  ALL_CFLAGS += $(CFLAGS) $(ALL_CPPFLAGS) -g -O3 -s EXPORTED_FUNCTIONS="['_sporthem_init', '_sporthem_compile', '_sporthem_process', '_sporthem_process_stereo', '_sporthem_setp', '_sporthem_getp']" --memory-init-file 0 -s EXTRA_EXPORTED_RUNTIME_METHODS="['cwrap']" -s BINARYEN_TRAP_MODE='clamp' -s WASM=1
-  ALL_CXXFLAGS += $(CXXFLAGS) $(ALL_CPPFLAGS) -g -O3 -s EXPORTED_FUNCTIONS="['_sporthem_init', '_sporthem_compile', '_sporthem_process', '_sporthem_process_stereo', '_sporthem_setp', '_sporthem_getp']" --memory-init-file 0 -s EXTRA_EXPORTED_RUNTIME_METHODS="['cwrap']" -s BINARYEN_TRAP_MODE='clamp' -s WASM=1
+  ALL_CFLAGS += $(CFLAGS) $(ALL_CPPFLAGS) -g -O3 -s EXPORTED_FUNCTIONS="['_sporthem_init', '_sporthem_compile', '_sporthem_process', '_sporthem_process_stereo', '_sporthem_setp', '_sporthem_getp']" --memory-init-file 0 -s EXTRA_EXPORTED_RUNTIME_METHODS="['cwrap']" -s WASM=1
+  ALL_CXXFLAGS += $(CXXFLAGS) $(ALL_CPPFLAGS) -g -O3 -s EXPORTED_FUNCTIONS="['_sporthem_init', '_sporthem_compile', '_sporthem_process', '_sporthem_process_stereo', '_sporthem_setp', '_sporthem_getp']" --memory-init-file 0 -s EXTRA_EXPORTED_RUNTIME_METHODS="['cwrap']" -s WASM=1
   ALL_RESFLAGS += $(RESFLAGS) $(DEFINES) $(INCLUDES)
   LIBS +=
   LDDEPS +=
-  ALL_LDFLAGS += $(LDFLAGS) -O3 -s EXPORTED_FUNCTIONS="['_sporthem_init', '_sporthem_compile', '_sporthem_process', '_sporthem_process_stereo', '_sporthem_setp', '_sporthem_getp']" --memory-init-file 0 -s EXTRA_EXPORTED_RUNTIME_METHODS="['cwrap']" -s BINARYEN_TRAP_MODE='clamp' -s WASM=1
+  ALL_LDFLAGS += $(LDFLAGS) -O3 -s EXPORTED_FUNCTIONS="['_sporthem_init', '_sporthem_compile', '_sporthem_process', '_sporthem_process_stereo', '_sporthem_setp', '_sporthem_getp']" --memory-init-file 0 -s EXTRA_EXPORTED_RUNTIME_METHODS="['cwrap']" -s WASM=1
   LINKCMD = $(CXX) -o "$@" $(OBJECTS) $(RESOURCES) $(ALL_LDFLAGS) $(LIBS)
   define PREBUILDCMDS
   endef
