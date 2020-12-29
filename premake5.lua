@@ -386,7 +386,7 @@ workspace "sporthem"
 		linkoptions "-O3"
 	filter {}
 	local emcc_opt = 
-	[[-s EXPORTED_FUNCTIONS="['_sporthem_init', '_sporthem_compile', '_sporthem_process', '_sporthem_process_stereo', '_sporthem_setp', '_sporthem_getp']" --memory-init-file 0 -s EXTRA_EXPORTED_RUNTIME_METHODS="['cwrap']" -s BINARYEN_TRAP_MODE='clamp' -s WASM=1]]
+	[[-s EXPORTED_FUNCTIONS="['_sporthem_init', '_sporthem_compile', '_sporthem_process', '_sporthem_process_stereo', '_sporthem_setp', '_sporthem_getp']" --memory-init-file 0 -s EXTRA_EXPORTED_RUNTIME_METHODS="['cwrap']" -s WASM=1]]
 	buildoptions(emcc_opt)
 	linkoptions(emcc_opt)
 	
